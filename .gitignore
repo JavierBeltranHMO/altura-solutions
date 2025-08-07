@@ -1,0 +1,32 @@
+# Virtual environments
+venv/
+venvaltura_solutions/
+
+# Environment variables file (contains secrets)
+.env
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local SQLite database (if used)
+db.sqlite3
+
+# Log files
+*.log
+
+# Static files and media folders (if generated locally and not versioned)
+staticfiles/
+media/
+
+# Temporary files
+*.swp
+*~
+
+# Docker ignore file (optional)
+.dockerignore
+
+# Local directories or files not to version
+home/
