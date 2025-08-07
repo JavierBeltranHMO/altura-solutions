@@ -29,3 +29,4 @@ typing_extensions==4.14.1
 urllib3==2.5.0
 wagtail==7.1
 Willow==1.11.0
+black==25.1.0
