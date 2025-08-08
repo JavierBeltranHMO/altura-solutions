@@ -29,4 +29,6 @@ media/
 .dockerignore
 
 # Local directories or files not to version
-home/
+home/*.tmp
+home/*.bak
+home/*.bak
