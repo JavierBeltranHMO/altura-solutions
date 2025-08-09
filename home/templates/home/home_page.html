@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load wagtailimages_tags %}
-{% block content %}
-    {% image page.banner_background_image original as bg_img %}
+
+{% block body_class %}home-page{% endblock %}
+
+
+{% block banner %}
+    {% image page.banner_background_image fill-1600x800 as bg_img %}
 
     <section class="hero" style="background-image: url('{{bg_img.url}}');">
        <div class="hero-overlay"></div> 
@@ -12,11 +16,11 @@
            {% endif %}
 
            {% if page.button %}
-               <a href="{{page.button.url}}">{{page.button_text}}</a>
+               <a href="{{page.button.url}}" class="btn btn-primary btn-lh px-4 py-2">{{page.button_text}}</a>
            {% endif %}
        </div>
     </section>
 
 
 
-{% endblock content %}
+{% endblock banner %}

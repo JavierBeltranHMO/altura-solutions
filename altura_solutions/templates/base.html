@@ -51,8 +51,13 @@
                 </div>
             </div>
         </nav>
-        
-        {% block content %}{% endblock %}
+
+        {% block banner %}{% endblock %}
+
+        <main id="content" class="container my-4" role"main">
+
+            {% block content %}{% endblock %}
+        </main>
 
         <!-- Footer -->
          <footer class="bg-dark text-white text-center py-4 mt-5">
