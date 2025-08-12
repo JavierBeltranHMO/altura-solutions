@@ -4,26 +4,29 @@
 {% block content %}
 <section class="service-page py-5">
     <div class="container">
-        <div class="text-center mb-4">
-            <h1 class="display-5 fw-bold text-primary">{{page.title}}</h1>
-            <p class="lead text-muted">{{page.description}}</p>
-
-            {% if page.service_image %}
-                {% image page.service_image fill-570x370 as img %}
-                <img src="{{img.url}}" alt="{{page.title}}" class="img-fluid rounded shadow-sm mb-4">
-            {% endif %}
-
-            {% if page.button_text %}
-                {% if page.internal_page %}
-                    <a href="{{page.internal_page.url}}" class="btn btn-primary">
-                        {{page.button_text}}
-                    </a>
-                    {% elif page.external_page %}
-                    <a href="{{page.external_page}}" class="btn btn-primary">
-                        {{page.button_text}}
-                    </a>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bold text-primary">{{page.title}}</h1>
+                <p class="lead text-muted">{{page.description}}</p>
+                {% if page.button_text %}
+                <hr>
+                    {% if page.internal_page %}
+                        <a href="{{page.internal_page.url}}" class="btn btn-primary btn-lg mb-3">
+                            {{page.button_text}}
+                        </a>
+                        {% elif page.external_page %}
+                        <a href="{{page.external_page}}" class="btn btn-primary btn-lg mb-2">
+                            {{page.button_text}}
+                        </a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
+            </div>
+            <div class="col-md-6 text-center">
+                {% if page.service_image %}
+                {% image page.service_image fill-570x370 as img %}
+                <img src="{{img.url}}" alt="{{page.title}}" class="img-fluid rounded shadow-sm">
+                {% endif %}
+            </div>
         </div>
     </div>
 </section>

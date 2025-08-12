@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+<section class="services-listing py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-primary">{{page.title}}</h2>
+            <p class="text-muted">{{page.subtitle}}</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Bug fixes</h5>
+                        <p class="card-text text-muted">
+                            stuff
+                        </p>
+                        <a href="#" class="btn btn-outline-primary">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Feature Implementation</h5>
+                        <p class="card-text text-muted">
+                            stuff
+                        </p>
+                        <a href="#" class="btn btn-outline-primary">Learn more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">MVP</h5>
+                        <p class="card-text text-muted">
+                            Minimum Viable Product
+                        </p>
+                        <a href="#" class="btn btn-outline-primary">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
