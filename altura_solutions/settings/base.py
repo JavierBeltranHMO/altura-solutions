@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     "search",
     "services",
     "misc",
-
+    "testimonials",
+    
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
