@@ -12,19 +12,22 @@
         </div>
         
         <div class="row g-4">
-            {% for i in services %}
+            {% for card in services %}
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0">
                     <div class="card-body text-center">
-                        <a href="#" class="">
+                        <a href="{{card.url}}" class="">
                             <picture>
-                                <img src="https://placehold.co/300x300" alt="Bug fixes" class="img-fluid rounded shadow-sm">
+                                {% image card.service_image fill-450x300 as card_img %}
+                                <img src="{{card_img.url}}" alt="{{card_img.alt}}" class="img-fluid rounded shadow-sm">
                             </picture>
                         </a>
-                        <h5 class="card-title fw-bold">Bug fixes</h5>
-                        <p class="card-text text-muted">
-                            stuff
-                        </p>
+                        <h5 class="card-title fw-bold">{{card.title}}</h5>
+                        {% if card.description %}
+                            <p class="card-text text-muted">
+                                {{card.description}}
+                            </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
