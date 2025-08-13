@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
@@ -52,3 +53,16 @@ class ServicePage(Page):
         FieldPanel("button_text"),
         FieldPanel("service_image"),
     ]
+
+    def clean(self):
+        super().clean()
+        v_error_message = "Please select an internal page OR enter an external URL"
+        if (self.internal_page and self.external_page) or (
+            not self.internal_page and not self.external_page
+        ):
+            raise ValidationError(
+                {
+                    "internal_page": ValidationError(v_error_message),
+                    "external_page": ValidationError(v_error_message),
+                }
+            )
