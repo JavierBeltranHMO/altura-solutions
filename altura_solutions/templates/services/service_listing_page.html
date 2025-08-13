@@ -6,18 +6,24 @@
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="fw-bold text-primary">{{page.title}}</h2>
-            <p class="text-muted">{{page.subtitle}}</p>
+            {% if page.subtitle %}
+                <p class="text-muted">{{page.subtitle}}</p>
+            {% endif %}
         </div>
         
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0">
                     <div class="card-body text-center">
+                        <a href="#" class="">
+                            <picture>
+                                <img src="https://placehold.co/300x300" alt="Bug fixes" class="img-fluid rounded shadow-sm">
+                            </picture>
+                        </a>
                         <h5 class="card-title fw-bold">Bug fixes</h5>
                         <p class="card-text text-muted">
                             stuff
                         </p>
-                        <a href="#" class="btn btn-outline-primary">Learn more</a>
                     </div>
                 </div>
             </div>

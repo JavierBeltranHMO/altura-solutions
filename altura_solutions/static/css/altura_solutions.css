@@ -41,3 +41,21 @@
   margin: 0 auto;
   line-height: 1.6;
 }
+
+/* ################## Service Listing Page ############################ */
+
+.services-listing {
+  background-color: #f8f9fa;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.services-listing .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-listing .card:hover {
+  transform: translateY(-5px);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
