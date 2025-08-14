@@ -2,6 +2,9 @@ from django.db import models
 
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
+from wagtail.fields import StreamField
+
+from streams.blocks import TitleBlock
 
 
 class HomePage(Page):
@@ -28,9 +31,18 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
     )
 
+    body = StreamField(
+        [
+            ("title", TitleBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel("lead_text"),
         PageChooserPanel("button"),
         FieldPanel("button_text"),
         FieldPanel("banner_background_image"),
+        FieldPanel("body"),
     ]
