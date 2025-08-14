@@ -8,4 +8,14 @@
     {% if card.text %}
         <p>{{card.text}}</p>
     {% endif %}
+
+    {% if card.internal_page %}
+    <a href="{{card.internal_page.url}}">
+        {{card.link_text}}
+    </a>
+    {% elif card.external_link %}
+    <a href="{{card.external_link}}">
+        {{card.link_text}}
+    </a>
+    {% endif %}
 {% endfor %}
