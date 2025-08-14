@@ -15,6 +15,12 @@ class TitleBlock(blocks.StructBlock):
         help_text = "Centered text to display on the page"
 
 
+class Link(blocks.StructBlock):
+    link_text = blocks.CharBlock(max_length=50, default="More details")
+    internal_page = blocks.PageChooserBlock(required=False)
+    external_link = blocks.URLBlock(required=False)
+
+
 class Card(blocks.StructBlock):
     title = blocks.CharBlock(
         max_length=100,
@@ -26,9 +32,7 @@ class Card(blocks.StructBlock):
         required=False,
     )
     image = ImageChooserBlock(help_text="Image will be cropped to 400px by 370px")
-    link_text = blocks.CharBlock(max_length=50, default="More details")
-    internal_page = blocks.PageChooserBlock(required=False)
-    external_link = blocks.URLBlock(required=False)
+    link = Link(help_text="Enter a link or select a page")
 
 
 class CardsBlock(blocks.StructBlock):

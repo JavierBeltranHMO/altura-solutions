@@ -1,21 +1,45 @@
+
 {% load wagtailimages_tags %}
 
-{% for card in self.cards %}
-    {% image card.image fill-400x370 as img %}
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for card in self.cards %}
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 card-hover text-center">
+                        {% image card.image fill-400x370 as img %}
+                        <img src="{{img.url}}" alt="{{img.alt}}" class="card-img-top rounded.top">
 
-    <img src="{{img.url}}" alt="{{img.alt}}">
-    <h1>{{card.title}}</h1>
-    {% if card.text %}
-        <p>{{card.text}}</p>
-    {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{card.title}}</h5>
 
-    {% if card.internal_page %}
-    <a href="{{card.internal_page.url}}">
-        {{card.link_text}}
-    </a>
-    {% elif card.external_link %}
-    <a href="{{card.external_link}}">
-        {{card.link_text}}
-    </a>
-    {% endif %}
-{% endfor %}
+                            {% if card.text %}
+                                <p class="card-text text-muted">{{card.text}}</p>
+                            {% endif %}
+                            
+                            {% if card.link.internal_page %}
+                            <a href="{{card.link.internal_page.url}}" class="btn btn-outline-primary">
+                                {{card.link.link_text}}
+                            </a>
+                            {% elif card.link.external_link %}
+                            <a href="{{card.link.external_link}}" class="btn btn-outline-primary">
+                                {{card.link.link_text}}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+  }
+</style>
