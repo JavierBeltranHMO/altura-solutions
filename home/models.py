@@ -4,7 +4,7 @@ from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
 from wagtail.fields import StreamField
 
-from streams.blocks import TitleBlock, CardsBlock
+import streams.blocks as blocks
 
 
 class HomePage(Page):
@@ -33,8 +33,9 @@ class HomePage(Page):
 
     body = StreamField(
         [
-            ("title", TitleBlock()),
-            ("cards",CardsBlock()),
+            ("title", blocks.TitleBlock()),
+            ("cards", blocks.CardsBlock()),
+            ("image_and_text", blocks.ImageAndTextBlock()),
         ],
         null=True,
         blank=True,

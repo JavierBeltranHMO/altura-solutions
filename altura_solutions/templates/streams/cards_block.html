@@ -16,15 +16,10 @@
                             {% if card.text %}
                                 <p class="card-text text-muted">{{card.text}}</p>
                             {% endif %}
-                            
-                            {% if card.link.internal_page %}
-                            <a href="{{card.link.internal_page.url}}" class="btn btn-outline-primary">
-                                {{card.link.link_text}}
-                            </a>
-                            {% elif card.link.external_link %}
-                            <a href="{{card.link.external_link}}" class="btn btn-outline-primary">
-                                {{card.link.link_text}}
-                            </a>
+                            {% if card.link.url %}
+                                <a href="{{card.link.url}}" class="btn btn-outline-primary">
+                                    {{card.link.link_text}}
+                                </a>
                             {% endif %}
                         </div>
                     </div>

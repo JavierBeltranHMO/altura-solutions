@@ -15,10 +15,24 @@ class TitleBlock(blocks.StructBlock):
         help_text = "Centered text to display on the page"
 
 
+class LinkValue(blocks.StructValue):
+    def url(self) -> str:
+        internal_page = self.get("internal_page")
+        external_link = self.get("external_link")
+        if internal_page:
+            return internal_page.url
+        elif external_link:
+            return external_link
+        return ""
+
+
 class Link(blocks.StructBlock):
     link_text = blocks.CharBlock(max_length=50, default="More details")
     internal_page = blocks.PageChooserBlock(required=False)
     external_link = blocks.URLBlock(required=False)
+
+    class Meta:
+        value_class = LinkValue
 
 
 class Card(blocks.StructBlock):
@@ -42,3 +56,31 @@ class CardsBlock(blocks.StructBlock):
         template = "streams/cards_block.html"
         icon = "image"
         label = "Standard Cards"
+
+
+class ImageAndTextBlock(blocks.StructBlock):
+    image = ImageChooserBlock(help_text="Image will be cropped to 786px by 552px")
+    image_alignment = blocks.ChoiceBlock(
+        choices=(
+            ("left", "Left"),
+            ("right", "Right"),
+        ),
+        default="left",
+        help_text="Image on left with text on right or viceversa",
+    )
+    title = blocks.CharBlock(
+        max_length=60,
+        help_text="Bold title text for this card, max length 60 chars",
+    )
+    text = blocks.CharBlock(
+        max_length=140,
+        help_text="Bold title text for this card, max length 140 chars",
+        required=False,
+    )
+
+    link = Link()
+
+    class Meta:
+        template = "streams/image_and_text_block.html"
+        icon = "image"
+        label = "Image & Text"

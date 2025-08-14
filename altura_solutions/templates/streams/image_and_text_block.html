@@ -1,0 +1,43 @@
+{% load wagtailimages_tags %}
+
+<div class="container my-5 image-and-text-block">
+    <div class="row align-items-center">
+        {% if self.image_alignment == "left" %}
+            <div class="col-md-6 mb-3 mb-md-0">
+                {% image self.image fill-786x552 as img %}
+                <img src="{{img.url}}" alt="{{img.alt}}" class="img-fluid rounded shadow-sm">
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="mb-3">{{self.title}}</h2>
+                {% if self.text %}
+                    <p class="mb-4">{{self.text}}</p>
+                {% endif %}
+
+                {% if self.link.url %}
+                    <a href="{{self.link.url}}" class="btn btn-primary">
+                        {{self.link.link_text}}
+                    </a>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="col-md-6 order-md-2 mb-3 mb-md-0">
+                {% image self.image fill-786x552 as img %}
+                <img src="{{img.url}}" alt="{{img.alt}}" class="img-fluid rounded shadow-sm">
+            </div>
+
+            <div class="col-md-6 order-md-1">
+                <h2 class="mb-3">{{self.title}}</h2>
+                {% if self.text %}
+                    <p class="mb-4">{{self.text}}</p>
+                {% endif %}
+
+                {% if self.link.url %}
+                    <a href="{{self.link.url}}" class="btn btn-primary">
+                        {{self.link.link_text}}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
