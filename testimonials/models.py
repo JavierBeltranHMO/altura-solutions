@@ -1,6 +1,8 @@
 from django.db import models
 
+from wagtail.snippets.models import register_snippet
 
+@register_snippet
 class Testimonial(models.Model):
     quote = models.TextField(max_length=500, blank=False, null=False)
     author = models.TextField(max_length=50, blank=False, null=False)
