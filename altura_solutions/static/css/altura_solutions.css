@@ -59,8 +59,15 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ################## Call 2 Action ############################ */
+/* ################## Blocks ############################ */
 .cta-section {
   background: linear-gradient(135deg, #007bff, #0056b3);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card {
+  max-width: 700px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
