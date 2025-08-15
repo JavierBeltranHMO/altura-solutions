@@ -71,3 +71,24 @@
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* ################## table ############################ */
+.table thead th {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  font-size: 1rem;
+}
+
+.table-hover tbody tr:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.table-primary {
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}

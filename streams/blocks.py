@@ -2,6 +2,7 @@ from django import forms
 
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.contrib.table_block.blocks import TableBlock
 
 
 class TitleBlock(blocks.StructBlock):
@@ -93,11 +94,19 @@ class ImageAndTextBlock(blocks.StructBlock):
         icon = "image"
         label = "Image & Text"
 
+
 class CallToActionBlock(blocks.StructBlock):
-    title=blocks.CharBlock(max_length=200, help_text="Max length 200 chars.")
-    link=Link()
+    title = blocks.CharBlock(max_length=200, help_text="Max length 200 chars.")
+    link = Link()
 
     class Meta:
         template = "streams/call_to_action_block.html"
         icon = "plus"
         label = "Call to Action"
+
+
+class PricingTableBlock(TableBlock):
+    class Meta:
+        template = "streams/pricing_table_block.html"
+        icon = "table"
+        label = "Pricing Table"

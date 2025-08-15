@@ -38,10 +38,14 @@ class HomePage(Page):
             ("cards", blocks.CardsBlock()),
             ("image_and_text", blocks.ImageAndTextBlock()),
             ("cta", blocks.CallToActionBlock()),
-            ("testimonial",SnippetChooserBlock(
-                target_model="testimonials.Testimonial",
-                template="streams/testimonial_block.html"
-                )),
+            (
+                "testimonial",
+                SnippetChooserBlock(
+                    target_model="testimonials.Testimonial",
+                    template="streams/testimonial_block.html",
+                ),
+            ),
+            ("pricing_table", blocks.PricingTableBlock()),
         ],
         null=True,
         blank=True,
