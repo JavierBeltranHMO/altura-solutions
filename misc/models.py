@@ -4,6 +4,7 @@ from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
 from wagtail.fields import StreamField
 from wagtail.snippets.blocks import SnippetChooserBlock
+from wagtail.images.blocks import ImageChooserBlock
 import wagtail.blocks as wagtail_blocks
 
 import streams.blocks as blocks
@@ -34,6 +35,13 @@ class MiscPage(Page):
                 wagtail_blocks.RichTextBlock(
                     template="streams/simple_richtext_block.html",
                     features=["bold", "italic", "ol", "ul", "link", "h3"],
+                ),
+            ),
+            (
+                "large_image",
+                ImageChooserBlock(
+                    help_text="Image cropped to 1200px by 780px",
+                    template="streams/large_image_block.html",
                 ),
             ),
         ],
