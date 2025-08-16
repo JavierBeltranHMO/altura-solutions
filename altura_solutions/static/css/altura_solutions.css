@@ -92,3 +92,23 @@
   font-weight: bold;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
+
+/* ################## Richtext ############################ */
+.richtext-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.richtext-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.richtext-content a {
+  color: var(--bs-primary);
+  text-decoration: underline;
+}
+
+.richtext-content a:hover {
+  color: var(--bs-primary-dark, #0a58ca);
+}
