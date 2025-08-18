@@ -1,9 +1,9 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.table_block.blocks import TableBlock
-
 
 class TitleBlock(blocks.StructBlock):
     text = blocks.CharBlock(
@@ -28,7 +28,6 @@ class LinkValue(blocks.StructValue):
             return external_link
         return ""
 
-
 class Link(blocks.StructBlock):
     link_text = blocks.CharBlock(max_length=50, default="More details")
     internal_page = blocks.PageChooserBlock(required=False)
@@ -37,7 +36,22 @@ class Link(blocks.StructBlock):
     class Meta:
         value_class = LinkValue
 
+    def clean(self, value):
+        errors = {}
+        internal_page = value.get("internal_page")
+        external_link = value.get("external_link")
 
+        if internal_page and external_link:
+            errors["internal_page"] = ValidationError("Cannot select both.")
+            errors["external_link"] = ValidationError("Cannot select both.")
+        elif not internal_page and not external_link:
+            errors["internal_page"] = ValidationError("You must choose at least one.")
+            errors["external_link"] = ValidationError("You must choose at least one.")
+
+        if errors:
+            raise blocks.StructBlockValidationError(block_errors=errors)
+
+        return super().clean(value)
 class Card(blocks.StructBlock):
     title = blocks.CharBlock(
         max_length=100,
