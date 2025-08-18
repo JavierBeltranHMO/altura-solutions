@@ -6,6 +6,8 @@ from wagtail.admin.panels import FieldPanel, PageChooserPanel
 
 
 class ServiceListingPage(Page):
+    parent_page_types = ["home.HomePage"]
+    max_count=1
     subtitle = models.TextField(
         blank=True,
         max_length=500,
@@ -22,6 +24,8 @@ class ServiceListingPage(Page):
 
 
 class ServicePage(Page):
+    parent_page_types = ["services.ServiceListingPage"]
+    subpage_types = []
     description = models.TextField(
         blank=True,
         max_length=500,

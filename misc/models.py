@@ -12,7 +12,7 @@ from home.models import new_table_options
 
 
 class MiscPage(Page):
-
+    parent_page_types = ["home.HomePage", "misc.MiscPage"]
     body = StreamField(
         [
             ("title", blocks.TitleBlock()),

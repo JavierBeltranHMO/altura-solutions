@@ -7,33 +7,36 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 
 import streams.blocks as blocks
 
-new_table_options={
-      'minSpareRows': 0,
-    'startRows': 3,
-    'startCols': 3,
-    'colHeaders': False,
-    'rowHeaders': True,
-    'contextMenu': [
-        'row_above',
-        'row_below',
-        '---------',
-        'col_left',
-        'col_right',
-        '---------',
-        'remove_row',
-        'remove_col',
-        '---------',
-        'undo',
-        'redo'
+new_table_options = {
+    "minSpareRows": 0,
+    "startRows": 3,
+    "startCols": 3,
+    "colHeaders": False,
+    "rowHeaders": True,
+    "contextMenu": [
+        "row_above",
+        "row_below",
+        "---------",
+        "col_left",
+        "col_right",
+        "---------",
+        "remove_row",
+        "remove_col",
+        "---------",
+        "undo",
+        "redo",
     ],
-    'editor': 'text',
-    'stretchH': 'all',
-    'height': 108,
-    'renderer': 'text',
-    'autoColumnSize': False,
+    "editor": "text",
+    "stretchH": "all",
+    "height": 108,
+    "renderer": "text",
+    "autoColumnSize": False,
 }
 
+
 class HomePage(Page):
+    parent_page_types = ["wagtailcore.Page"]
+    max_count=1
     lead_text = models.CharField(
         max_length=140, blank=True, help_text="Subheading text under banner title"
     )
@@ -70,7 +73,10 @@ class HomePage(Page):
                     template="streams/testimonial_block.html",
                 ),
             ),
-            ("pricing_table", blocks.PricingTableBlock(table_options=new_table_options)),
+            (
+                "pricing_table",
+                blocks.PricingTableBlock(table_options=new_table_options),
+            ),
         ],
         null=True,
         blank=True,
