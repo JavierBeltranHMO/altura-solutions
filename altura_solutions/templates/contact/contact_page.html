@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        {% comment %} intro {% endcomment %}
+        <div class="row mb-4">
+            <h1 class="mb3">{{page.title}}</h1>
+            <p class="lead">
+                {{page.intro|richtext}}
+            </p>
+        </div>
+
+        <div class="row g-5">
+        {% comment %} form {% endcomment %}
+            <div class="col-lg-6">
+                <div class="card shadow border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-4">Get in touch</h2>
+                        <form action="{% pageurl page %}" method="POST">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="mb-3">
+                                {{field.label_tag}}
+                                {{field}}
+                                {% if field.help_text %}
+                                    <div class="form-text">{{field.help_text}}</div>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <div class="text-danger small">{{errors}}</div>
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+
+                            <button type="submit" class="btn btn-primary w-100"> Send Message </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} Map {% endcomment %}
+             <div class="col-lg-6">
+                <div class="mb-4">
+                    {% if page.map_image %}
+                        {% image page.map_image fill-580x335 as img %}
+                        <img src="{{img.url}}" alt="img.alt" c1lass="img-fluid rounded shadow-sm">
+                    {% endif %}
+                </div>
+                {% if page.map_url %}
+                    <p>
+                        <a href="{{page.map_url}}" target="_blank" class="btn btn-outline-primary">
+                            View on Google Maps
+                        </a>
+                    </p>
+                {% endif %}
+             </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
