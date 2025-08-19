@@ -36,7 +36,7 @@ new_table_options = {
 
 class HomePage(Page):
     parent_page_types = ["wagtailcore.Page"]
-    max_count=1
+    max_count = 1
     lead_text = models.CharField(
         max_length=140, blank=True, help_text="Subheading text under banner title"
     )

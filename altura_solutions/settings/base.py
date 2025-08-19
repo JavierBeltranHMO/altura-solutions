@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "testimonials",
     "streams",
     "menus",
+    "contact",
     
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
