@@ -19,7 +19,7 @@ class MenuItem(Orderable):
         on_delete=models.CASCADE,
     )
     open_new_tab = models.BooleanField(default=False, blank=True)
-    
+
     panels = [
         FieldPanel("link_title"),
         FieldPanel("link_url"),
@@ -28,6 +28,21 @@ class MenuItem(Orderable):
     ]
     page = ParentalKey("Menu", related_name="menu_items")
 
+    @property
+    def link(self) -> str:
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_url:
+            return self.link_url
+        return "#"
+
+    @property
+    def title(self):
+        if self.link_page and not self.link_title:
+            return self.link_page.title
+        elif self.link_title:
+            return self.link_title
+        return "Missing title"
 
 class Menu(ClusterableModel):
     title = models.CharField(max_length=100)
