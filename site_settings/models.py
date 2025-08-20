@@ -2,6 +2,17 @@ from django.db import models
 
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
+from wagtail.fields import RichTextField
+
+
+@register_setting
+class ContactSettings(BaseSiteSetting):
+    contact = RichTextField(
+        blank=True,
+        null=True,
+        features=["link"],
+    )
+    panels = [FieldPanel("contact")]
 
 
 @register_setting
