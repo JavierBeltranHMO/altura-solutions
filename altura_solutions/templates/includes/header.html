@@ -1,23 +1,30 @@
-        {% load static menu_tags %}
-        {% get_menu "header" as navigation %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a href="/" class="navbar-brand">
-                    <img src="{% static 'images/altura-solutions-logo-grayscale-transparent.png' %}" alt="Altura Solutions" class="img-fluid" style="max-width:120px; height:auto;">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        {% for item in navigation.menu_items.all %}
-                        <li class="nav-item">
-                            <a href="{{item.link}}" class="nav-link" {% if item.open_new_tab %}target="_blank"{% endif %}>
-                                {{item.title}}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
+{% load static menu_tags %}
+{% get_menu "header" as navigation %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container d-flex justify-content-between">
+        <!-- Logo a la izquierda -->
+        <a href="/" class="navbar-brand">
+            <img src="{% static 'images/altura-solutions-logo-grayscale-transparent.png' %}" 
+                 alt="Altura Solutions" class="img-fluid" style="max-width:120px; height:auto;">
+        </a>
+
+        <!-- Botón para mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links a la derecha -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for item in navigation.menu_items.all %}
+                <li class="nav-item">
+                    <a href="{{item.link}}" class="nav-link" {% if item.open_new_tab %}target="_blank"{% endif %}>
+                        {{item.title}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
