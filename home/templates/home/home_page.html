@@ -27,6 +27,8 @@
 
 {% block content %}
     {% for block in page.body %}
+    <section class="py-5 {% if forloop.counter|divisibleby:2%}bg-light{% else %}bg-white{% endif %}">
         {% include_block block  %}
+    </section>
     {% endfor %}
 {% endblock content %}

@@ -40,7 +40,6 @@
     </head>
     
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
         
         <!-- Nav -->
         {% include "includes/header.html" %}
@@ -48,7 +47,7 @@
 
         {% block banner %}{% endblock %}
 
-        <main id="content" class="container my-4" role="main">
+        <main id="content" class="ms-5" role="main">
 
             {% block content %}{% endblock %}
         </main>

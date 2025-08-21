@@ -1,3 +1,20 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 /* ################## Hero ############################ */
 .hero {
   position: relative;
@@ -29,6 +46,9 @@
 /* ################## Service Page ############################ */
 .service-page {
   background-color: #f8f9fa;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .service-page h1 {
