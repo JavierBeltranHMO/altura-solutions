@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.core.exceptions import ValidationError
 
 from wagtail.models import Page
@@ -7,7 +8,7 @@ from wagtail.admin.panels import FieldPanel, PageChooserPanel
 
 class ServiceListingPage(Page):
     parent_page_types = ["home.HomePage"]
-    max_count=1
+    max_count = 1
     subtitle = models.TextField(
         blank=True,
         max_length=500,
@@ -70,3 +71,8 @@ class ServicePage(Page):
                     "external_page": ValidationError(v_error_message),
                 }
             )
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["STRIPE_PUBLISHABLE_KEY"] = settings.STRIPE_PUBLISHABLE_KEY
+        return context

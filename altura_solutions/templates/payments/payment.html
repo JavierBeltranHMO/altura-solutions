@@ -1,7 +1,7 @@
 {% load static %}
 <div class="container text-center py-5">
     <h2 class="mb-4">Complete Your Payment</h2>
-    <button id="checkout-button" class="btn btn-primary btn-lg">Check Out</button>
+    <button id="checkout-btn" class="btn btn-primary btn-lg" data-serice="{{service}}">Check Out</button>
 </div>
 
 <script src="https://js.stripe.com/v3/"></script>
@@ -9,13 +9,20 @@
 <script>
     const stripe = Stripe("{{ STRIPE_PUBLISHABLE_KEY }}");
 
-    document.getElementById("checkout-button").addEventListener("click", async () => {
-        const response = await fetch("{% url 'create-checkout-session' %}", {method: "POST"});
-        const session = await response.json();
-        const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
-        if (error){
-            console.error(error);
-            alert(error.message);
-        }
-    });
+    document.getElementById("checkout-btn").addEventListener("click", async() => {
+            const service = document.getElementById("checkout-btn").dataset.service;
+            const response = await fetch("{% url 'create-checkout-session' %}",{
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: `service=${service}`
+            });
+            const session = await response.json();
+
+            if(session.error){
+                alert(session.error);
+                return;
+            }
+            const {error} = await stripe.redirectToCheckout({sessionId: session.id});
+            if(error) alert(error.message);
+        });
 </script>

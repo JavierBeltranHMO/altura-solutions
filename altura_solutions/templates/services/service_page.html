@@ -8,14 +8,16 @@
             <div class="col-md-6">
                 <h1 class="display-5 fw-bold text-primary">{{page.title}}</h1>
                 <p class="lead text-muted">{{page.description}}</p>
+
+                <button class="btn btn-primary btn-lg" id="checkout-btn" data-service="{{page.slug}}"> Buy Now</button>
                 {% if page.button_text %}
                 <hr>
                     {% if page.internal_page %}
-                        <a href="{{page.internal_page.url}}" class="btn btn-primary btn-lg mb-3">
+                        <a href="{{page.internal_page.url}}" class="btn btn-secondary btn-lg mb-3">
                             {{page.button_text}}
                         </a>
                         {% elif page.external_page %}
-                        <a href="{{page.external_page}}" class="btn btn-primary btn-lg mb-2">
+                        <a href="{{page.external_page}}" class="btn btn-secondary btn-lg mb-2">
                             {{page.button_text}}
                         </a>
                     {% endif %}
@@ -30,5 +32,28 @@
         </div>
     </div>
 </section>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe("{{ STRIPE_PUBLISHABLE_KEY }}");
+
+    document.getElementById("checkout-btn").addEventListener("click", async() => {
+            const service = document.getElementById("checkout-btn").dataset.service;
+
+            const response = await fetch("{% url 'create-checkout-session' %}",{
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: `service=${service}`
+            });
+            const session = await response.json();
+
+            if(session.error){
+                alert(session.error);
+                return;
+            }
+            const {error} = await stripe.redirectToCheckout({sessionId: session.id});
+            if(error) alert(error.message);
+        });
+</script>
 
 {% endblock content %}
