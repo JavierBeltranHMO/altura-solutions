@@ -32,3 +32,6 @@ media/
 home/*.tmp
 home/*.bak
 home/*.bak
+
+#cache
+.cache
