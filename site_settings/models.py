@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
@@ -14,6 +16,11 @@ class ContactSettings(BaseSiteSetting):
     )
     panels = [FieldPanel("contact")]
 
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key("footer_contact_settings")
+        cache.delete(key)
+        return super().save(*args, **kwargs)
+
 
 @register_setting
 class SocialMediaSettings(BaseSiteSetting):
@@ -28,3 +35,7 @@ class SocialMediaSettings(BaseSiteSetting):
         FieldPanel("youtube"),
         FieldPanel("instagram"),
     ]
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key("footer_social_settings")
+        cache.delete(key)
+        return super().save(*args, **kwargs)

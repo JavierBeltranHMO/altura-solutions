@@ -1,4 +1,4 @@
-{% load static menu_tags wagtailcore_tags %}
+{% load static menu_tags wagtailcore_tags cache %}
 {% get_menu "header" as navigation %}
 
 <footer class="bg-dark text-white text-center py-4 mt-auto">
@@ -14,6 +14,7 @@
             <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="text-uppercase fw-bold">Links</h6>
                 <ul class="nav flex-column">
+                    {% cache 2592000 site_footer %}
                     {% for item in navigation.menu_items.all %}
                     <li class="nav-item">
                         <a href="{{item.link}}" class="nav-link px-0 text-white" {% if item.open_new_tab %}target="_blank"{% endif %}>
@@ -21,6 +22,7 @@
                         </a>
                     </li>
                     {% endfor %}
+                    {% endcache %}
                 </ul>
             </div>
             
@@ -28,15 +30,17 @@
             <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="text-uppercase fw-bold">Contact Us</h6>
                 <div>
+                    
                     {{settings.site_settings.ContactSettings.contact|richtext}}
                 </div>
-            </div>
+            </div>            
             
             {% comment %} socila media {% endcomment %}
+            {% cache 2592000 ooter_social_settings %}
             <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="text-uppercase fw-bold">Follow Us</h6>
                 <div class="d-flex justify-content-center justify-content-md-start">
-
+                    
                     {% if settings.site_settings.SocialMediaSettings.facebook %}
                     <a href="{{settings.site_settings.SocialMediaSettings.facebook}}" class="text-white me-3 fs-4" target="_blank"><i class="bi bi-facebook"></i></a>
                     {% endif %}
@@ -54,6 +58,7 @@
                     {% endif %}
                 </div>
             </div>
+            {% endcache %}
         </div>
     </div>
 </footer> 

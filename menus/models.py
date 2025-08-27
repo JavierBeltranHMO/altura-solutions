@@ -1,5 +1,7 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -44,6 +46,7 @@ class MenuItem(Orderable):
             return self.link_title
         return "Missing title"
 
+
 class Menu(ClusterableModel):
     title = models.CharField(max_length=100)
     slug = AutoSlugField(
@@ -58,3 +61,10 @@ class Menu(ClusterableModel):
 
     def __str__(self):
         return self.title or f"(Menu #{self.pk})"
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key("site_header")
+        cache.delete(key)
+        key = make_template_fragment_key("site_footer")
+        cache.delete(key)
+        return super().save(**kwargs)
