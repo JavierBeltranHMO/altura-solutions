@@ -17,12 +17,12 @@ import environ
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
-# Stripe
-
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+
+# Stripe
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
 STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")
 STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET")
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "menus",
     "contact",
     "site_settings",
-    
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.table_block",
@@ -62,7 +61,6 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
-
     "django_filters",
     "django.contrib.admin",
     "django.contrib.auth",
