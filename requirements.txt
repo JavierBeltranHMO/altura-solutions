@@ -36,6 +36,7 @@ platformdirs==4.3.8
 pudb==2025.1
 Pygments==2.19.2
 requests==2.32.4
+sentry-sdk[django]
 soupsieve==2.7
 sqlparse==0.5.3
 stripe-12.4.0
