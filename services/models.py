@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
@@ -22,6 +24,11 @@ class ServiceListingPage(Page):
         context = super().get_context(request, *args, **kwargs)
         context["services"] = ServicePage.objects.live().public()
         return context
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key("services")
+        cache.delete(key)
+        return super().save(*args, **kwargs)
 
 
 class ServicePage(Page):
@@ -76,3 +83,11 @@ class ServicePage(Page):
         context = super().get_context(request)
         context["STRIPE_PUBLISHABLE_KEY"] = settings.STRIPE_PUBLISHABLE_KEY
         return context
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key(
+            "service",
+            [self.id],
+        )
+        cache.delete(key)
+        return super().save(*args, **kwargs)

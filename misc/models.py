@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, PageChooserPanel
@@ -56,3 +58,8 @@ class MiscPage(Page):
     class Meta:
         verbose_name = "Miscellaneous page"
         verbose_name_plural = "Miscellaneous pages"
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key("misc_page_streams", [self.id],)
+        cache.delete(key)
+        return super().save(*args, **kwargs)

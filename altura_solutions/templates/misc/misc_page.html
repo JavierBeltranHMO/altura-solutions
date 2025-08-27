@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags cache %}
 {% block content %}
     <div class="container my-5">
         <div class="text-center mb-5">
@@ -12,7 +12,9 @@
         </div>
     </div>
 
+    {% cache 2592000 misc_page_streams page.id %}
     {% for block in page.body %}
         {% include_block block  %}
     {% endfor %}
+    {% endcache %}
 {% endblock content %}
