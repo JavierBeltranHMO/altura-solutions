@@ -6,7 +6,7 @@ STORAGES["staticfiles"][
     "BACKEND"
 ] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = 'myproject.settings.storage.IgnoreMissingManifestFilesStorage'
 
 ALLOWED_HOSTS = ["localhost", "", ""]
 
