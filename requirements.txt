@@ -39,7 +39,7 @@ requests==2.32.4
 sentry-sdk[django]
 soupsieve==2.7
 sqlparse==0.5.3
-stripe-12.4.0
+stripe==12.4.0
 telepath==0.3.1
 typing_extensions==4.14.1
 urllib3==2.5.0
