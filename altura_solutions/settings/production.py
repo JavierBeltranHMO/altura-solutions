@@ -6,8 +6,6 @@ STORAGES["staticfiles"][
     "BACKEND"
 ] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-STATICFILES_STORAGE = 'myproject.settings.storage.IgnoreMissingManifestFilesStorage'
-
 ALLOWED_HOSTS = ["localhost", "", ""]
 
 DATABASES = {
@@ -37,6 +35,24 @@ sentry_sdk.init(
     # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     send_default_pii=True,
 )
+
+# settings/base.py o settings/production.py
+from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
+
+
+class IgnoreMissingManifestFilesStorage(ManifestStaticFilesStorage):
+    def post_process(self, *args, **kwargs):
+        for item in super().post_process(*args, **kwargs):
+            try:
+                yield item
+            except ValueError as e:
+                if "could not be found" in str(e):
+                    continue
+                else:
+                    raise
+
+
+STATICFILES_STORAGE = "myproject.settings.production.IgnoreMissingManifestFilesStorage"
 
 try:
     from .local import *
