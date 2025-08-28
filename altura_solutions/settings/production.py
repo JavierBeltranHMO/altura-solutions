@@ -6,7 +6,7 @@ STORAGES["staticfiles"][
     "BACKEND"
 ] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-ALLOWED_HOSTS = ["localhost", "", ""]
+ALLOWED_HOSTS = ["localhost", "165.22.133.102"]
 
 DATABASES = {
     "default": {
