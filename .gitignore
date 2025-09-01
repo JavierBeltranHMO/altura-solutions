@@ -20,6 +20,9 @@ db.sqlite3
 # Static files and media folders (if generated locally and not versioned)
 staticfiles/
 media/
+/static/*
+!/static/css/altura_solutions.css
+!/static/images/
 
 # Temporary files
 *.swp
