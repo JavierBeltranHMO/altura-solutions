@@ -18,11 +18,9 @@ db.sqlite3
 *.log
 
 # Static files and media folders (if generated locally and not versioned)
-staticfiles/
-media/
 /static/*
-!/static/css/altura_solutions.css
-!/static/images/
+!/static/src/
+
 
 # Temporary files
 *.swp
