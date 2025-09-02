@@ -41,6 +41,7 @@ from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+
 class IgnoreMissingManifestFilesStorage(ManifestStaticFilesStorage):
     def post_process(self, *args, **kwargs):
         for item in super().post_process(*args, **kwargs):
@@ -53,7 +54,9 @@ class IgnoreMissingManifestFilesStorage(ManifestStaticFilesStorage):
                     raise
 
 
-STATICFILES_STORAGE = "myproject.settings.production.IgnoreMissingManifestFilesStorage"
+STATICFILES_STORAGE = (
+    "altura_solutions.settings.production.IgnoreMissingManifestFilesStorage"
+)
 
 try:
     from .local import *
