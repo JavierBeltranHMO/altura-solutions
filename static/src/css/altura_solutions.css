@@ -1,0 +1,134 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* ################## Hero ############################ */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 15px;
+}
+
+/* ################## Service Page ############################ */
+.service-page {
+  background-color: #f8f9fa;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.service-page h1 {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.service-page p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ################## Service Listing Page ############################ */
+
+.services-listing {
+  background-color: #f8f9fa;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.services-listing .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-listing .card:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ################## Blocks ############################ */
+.cta-section {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card {
+  max-width: 700px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ################## table ############################ */
+.table thead th {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  font-size: 1rem;
+}
+
+.table-hover tbody tr:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.table-primary {
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* ################## Richtext ############################ */
+.richtext-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.richtext-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.richtext-content a {
+  color: var(--bs-primary);
+  text-decoration: underline;
+}
+
+.richtext-content a:hover {
+  color: var(--bs-primary-dark, #0a58ca);
+}
