@@ -54,9 +54,11 @@ class IgnoreMissingManifestFilesStorage(ManifestStaticFilesStorage):
                     raise
 
 
-STATICFILES_STORAGE = (
-    "altura_solutions.settings.production.IgnoreMissingManifestFilesStorage"
-)
+# STATICFILES_STORAGE = (
+#     "altura_solutions.settings.production.IgnoreMissingManifestFilesStorage"
+# )
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 try:
     from .local import *
