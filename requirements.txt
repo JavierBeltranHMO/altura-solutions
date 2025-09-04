@@ -22,6 +22,7 @@ djangorestframework==3.16.1
 draftjs_exporter==5.1.0
 et_xmlfile==2.0.0
 filetype==1.2.0
+gunicorn==23.0.0
 idna==3.10
 jedi==0.19.2
 laces==0.1.2
@@ -33,10 +34,12 @@ pathspec==0.12.1
 pillow==11.3.0
 pillow_heif==1.1.0
 platformdirs==4.3.8
+psycopg==3.2.9
+psycopg-binary==3.2.9
 pudb==2025.1
 Pygments==2.19.2
 requests==2.32.4
-sentry-sdk[django]
+sentry-sdk==2.35.2
 soupsieve==2.7
 sqlparse==0.5.3
 stripe==12.4.0
