@@ -36,14 +36,13 @@
             </div>            
             
             {% comment %} socila media {% endcomment %}
-hello
+
             {% cache 2592000 footer_social_settings %}
             <div class="col-12 col-md-3 mb-3 mb-md-0">
-hello
                 <h6 class="text-uppercase fw-bold">Follow Us</h6>
-hello
+
                 <div class="d-flex justify-content-center justify-content-md-start">
-                    hello
+                   
                     {% if settings.site_settings.SocialMediaSettings.facebook %}
                     <a href="{{settings.site_settings.SocialMediaSettings.facebook}}" class="text-white me-3 fs-4" target="_blank"><i class="bi bi-facebook"></i></a>
                     {% endif %}
@@ -62,13 +61,6 @@ hello
                 </div>
             </div>
             {% endcache %}
-
-            <pre>
-                Facebook: {{ settings.site_settings.SocialMediaSettings.facebook }}
-                X: {{ settings.site_settings.SocialMediaSettings.x }}
-                Youtube: {{ settings.site_settings.SocialMediaSettings.youtube }}
-                Instagram: {{ settings.site_settings.SocialMediaSettings.instagram }}
-            </pre>
         </div>
     </div>
 </footer> 
