@@ -35,6 +35,7 @@ class SocialMediaSettings(BaseSiteSetting):
         FieldPanel("youtube"),
         FieldPanel("instagram"),
     ]
+
     def save(self, *args, **kwargs):
         key = make_template_fragment_key("footer_social_settings")
         cache.delete(key)
