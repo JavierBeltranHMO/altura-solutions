@@ -40,6 +40,7 @@ sentry_sdk.init(
 from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 class IgnoreMissingManifestFilesStorage(ManifestStaticFilesStorage):
