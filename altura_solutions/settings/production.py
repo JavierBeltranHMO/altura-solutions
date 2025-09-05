@@ -2,9 +2,15 @@ from .base import *
 
 DEBUG = False
 
-STORAGES["staticfiles"][
-    "BACKEND"
-] = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+STORAGES={
+	"default":{"BACKEND": "django.core.files.storage.FileSystemStorage"},
+	"staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"},
+}
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 
 ALLOWED_HOSTS = ["localhost", "165.22.133.102", "altura-solutions.duckdns.org"]
 
@@ -38,9 +44,6 @@ sentry_sdk.init(
 
 # settings/base.py o settings/production.py
 from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
-
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 class IgnoreMissingManifestFilesStorage(ManifestStaticFilesStorage):
