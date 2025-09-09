@@ -11,9 +11,9 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 SERVICES_PRICES = {
-    "bug-fix": 5000,  # 50.00 USD
+    "bug-fix-code-optimization": 5000,  # 50.00 USD
     "feature-integration": 12000,  # 120.00 USD
-    "mvp": 25000,  # 250.00 USD
+    "mvp-design-development": 25000,  # 250.00 USD
 }
 
 
