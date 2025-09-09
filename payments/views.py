@@ -29,7 +29,10 @@ def create_checkout_session(request):
             {
                 "price_data": {
                     "currency": "usd",
-                    "product_data": {"name": service_id.replace("-", " ").title()},
+                    "product_data": {
+                        "name": service_id.replace("-", " ").title(),
+                        "description": "Demo: use card 4242 4242 4242 4242 with any future date and CVC",
+                    },
                     "unit_amount": SERVICES_PRICES[service_id],
                 },
                 "quantity": 1,
