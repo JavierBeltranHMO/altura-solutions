@@ -9,7 +9,7 @@ Github
 <br>
 <div align="center">
    <!-- TODO -->
-   <a href="https://altura-solutions.duckdns.org"><img src="docs/altura-solutions-logo-transparent" alt="logo" width="80" height="80"></a>
+   <a href="https://altura-solutions.duckdns.org"><img src="docs/altura-solutions-logo-transparent.png" alt="logo" width="80" height="80"></a>
 
    <h3 align="center">Altura Solutions</h3>
 
