@@ -140,12 +140,19 @@ python manage.py runserver
 ### Screenshots
 
 1. **Home Banner**:
+
    ![Home Banner][homepage-banner]
+
 2. **Projects Section in Home**
+
    ![Home Proyects Example][homepageproyects]
+
 3. **Service Listing**:
+
    ![Service Listing Page][servicelisting]
+
 4. **Stripe Integration**:
+
    ![Checkout][stripe]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
