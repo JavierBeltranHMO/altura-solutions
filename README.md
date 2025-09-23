@@ -9,7 +9,7 @@ Github
 <br>
 <div align="center">
    <!-- TODO -->
-   <a href="https://altura-solutions.duckdns.org"><img src="docs/altura-solutions-logo-transparent.png" alt="logo" width="80" height="80"></a>
+   <a href="https://altura-solutions.duckdns.org"><img src="docs/altura-solutions-logo-transparent.png" alt="logo" width="auto" height="80"></a>
 
    <h3 align="center">Altura Solutions</h3>
 
@@ -32,17 +32,17 @@ Github
             <li><a href="#built-with">Built With</a></li>
          </ul>
       </li>
-      <li><a href="#installation">Instalation</a></li>
+      <li><a href="#installation">Installation</a></li>
       <li><a href="#features-implemented">Features Implemented</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#licence">License</a></li>
+      <li><a href="#license">License</a></li>
    </ol>
  </details>
 
 <!-- DEMO -->
 
-## Demo 🚀
+## Demo
 
 🔗 [Live Demo](https://altura-solutions.duckdns.org)
 
